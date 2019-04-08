@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.midtermmad3125.R;
 import com.midtermmad3125.utils.ReadJSONUtils;
 
+import org.json.JSONObject;
+
 public class MainCityActivity extends AppCompatActivity
 
 {
@@ -27,5 +29,19 @@ private Button w;
         clon = findViewById(R.id.txtcitylon);
         cpopulation = findViewById(R.id.txtcityp);
         w = findViewById(R.id.btnweather);
+    }
+
+    public void getJsonData (){
+        String JsonData = ReadJSONUtils.loadJSONFromAsset(this,"moscow_weather.json");
+
+        try {
+            JSONObject cData = new JSONObject(JsonData);
+            JSONObject cObject= cData.getJSONObject("city");
+            String cityid = cObject.getString("name");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
