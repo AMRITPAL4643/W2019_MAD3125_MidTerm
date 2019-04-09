@@ -12,7 +12,10 @@ import com.midtermmad3125.R;
 import com.midtermmad3125.SplashscreenActivity;
 import com.midtermmad3125.utils.ReadJSONUtils;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainCityActivity extends AppCompatActivity
 
@@ -23,7 +26,7 @@ private TextView clon;
 private TextView cpopulation;
 private Button w;
 private TextView c;
-
+private ArrayList<WheatherList> wheatherListArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +70,12 @@ private TextView c;
 
             c.setText("Country: "+object.getString("country"));
             cpopulation.setText("population: "+object.getString("population"));
+            JSONArray list = Data.getJSONArray("list");
+            for(int y = 0; y < list.length(); y++);
+            {
+
+            }
+
 
         }
         catch(Exception e)
