@@ -1,12 +1,15 @@
 package com.midtermmad3125.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.midtermmad3125.R;
+import com.midtermmad3125.SplashscreenActivity;
 import com.midtermmad3125.utils.ReadJSONUtils;
 
 import org.json.JSONObject;
@@ -32,7 +35,18 @@ private TextView c;
         w = findViewById(R.id.btnweather);
         c = findViewById(R.id.txtcitycode);
         getJsonData();
+
+        w.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(MainCityActivity.this, WeatherDetailsActivity.class);
+                startActivity(mIntent);
+            }
+        });
+
+
     }
+
 
     public void getJsonData ()
     {
