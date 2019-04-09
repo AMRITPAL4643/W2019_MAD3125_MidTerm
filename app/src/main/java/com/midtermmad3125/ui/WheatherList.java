@@ -3,7 +3,9 @@ package com.midtermmad3125.ui;
 import com.midtermmad3125.Modal.Temperature;
 import com.midtermmad3125.Modal.Wheather;
 
-public class WheatherList {
+import java.io.Serializable;
+
+public class WheatherList implements Serializable {
 
     private Integer dt;
     private Temperature temp;

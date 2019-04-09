@@ -23,6 +23,8 @@ private TextView clon;
 private TextView cpopulation;
 private Button w;
 private TextView c;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -65,6 +67,7 @@ private TextView c;
 
             c.setText("Country: "+object.getString("country"));
             cpopulation.setText("population: "+object.getString("population"));
+
         }
         catch(Exception e)
         {
