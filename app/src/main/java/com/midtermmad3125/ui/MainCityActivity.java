@@ -19,6 +19,7 @@ private TextView clat;
 private TextView clon;
 private TextView cpopulation;
 private Button w;
+private TextView c;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,15 +30,27 @@ private Button w;
         clon = findViewById(R.id.txtcitylon);
         cpopulation = findViewById(R.id.txtcityp);
         w = findViewById(R.id.btnweather);
+        c = findViewById(R.id.txtcitycode);
+        getJsonData();
     }
 
-    public void getJsonData (){
+    public void getJsonData ()
+    {
         String JsonData = ReadJSONUtils.loadJSONFromAsset(this,"moscow_weather.json");
 
-        try {
-            JSONObject cData = new JSONObject(JsonData);
-            JSONObject cObject= cData.getJSONObject("city");
-            String cityid = cObject.getString("name");
+        try
+        {
+            JSONObject Data = new JSONObject(JsonData);
+            JSONObject object= Data.getJSONObject("city");
+            String cityid = object.getString("name");
+            cname.setText(object.getString("name"));
+
+            JSONObject cityCoordObject= object.getJSONObject("coord");
+            clon.setText("Longitude: "+cityCoordObject.getString("lon"));
+            clat.setText("Latitude: "+cityCoordObject.getString("lat"));
+
+            c.setText("Country: "+object.getString("country"));
+            cpopulation.setText("population: "+object.getString("population"));
         }
         catch(Exception e)
         {
